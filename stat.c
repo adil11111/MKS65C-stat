@@ -14,18 +14,19 @@ int main(){
   if(s<0){
     printf("Errors:%s\n", strerror(errno));
   }
-  char permissions[8][4] = {"---","--x","-w-","-wx","r--","r-x","rw-","rwx"};
   printf("Size: %ld bytes\n",buff->st_size);
+  printf("Mode: %o\n", buff->st_mode);
+  printf("Time of Last Access: %s",ctime(&(buff->st_atime)));
+  //char permissions[8][4] = {"---","--x","-w-","-wx","r--","r-x","rw-","rwx"};
   //printf("User: %o\n", ((buff->st_mode)/64)%8);
   //printf("Group: %o\n", ((buff->st_mode)/8)%8);
   //printf("Other: %o\n", ((buff->st_mode))%8);
-  int u = ((buff->st_mode)/64)%8;
-  int g = ((buff->st_mode)/8)%8;
-  int o = ((buff->st_mode))%8;
-  char user[4];
-  //strcpy(user,permissions[3]);
-  printf("User: %s\n",permissions[3]);
-  printf("Time of Last Access: %s",ctime(&(buff->st_atime)));
+  /*int u = ((buff->st_mode)/64)%8;
+    int g = ((buff->st_mode)/8)%8;
+    int o = ((buff->st_mode))%8;
+    char user[4];
+    //strcpy(user,permissions[3]);*/
+  //printf("User: %s\n",permissions[3]);
 
   return 0;
 }
